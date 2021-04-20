@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="411dp"
+        android:layout_height="66dp"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Cricket Match Toss"
+        android:background="@color/cardview_dark_background"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        style="style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:textColor="@color/androidGreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgCoin"
+        android:layout_width="157dp"
+        android:layout_height="159dp"
+        android:src="@drawable/head"
+        app:layout_constraintBottom_toTopOf="@+id/txtViewOutcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btnToss"
+        android:layout_width="241dp"
+        android:layout_height="97dp"
+        android:layout_marginBottom="108dp"
+        android:text="Toss"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imgCoin"
+        app:layout_constraintStart_toStartOf="@+id/imgCoin" />
+
+    <TextView
+        android:id="@+id/txtViewOutcome"
+        android:layout_width="226dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="80dp"
+        android:gravity="center"
+        android:hint="Bharat"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnToss"
+        app:layout_constraintEnd_toEndOf="@+id/imgCoin"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/imgCoin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
