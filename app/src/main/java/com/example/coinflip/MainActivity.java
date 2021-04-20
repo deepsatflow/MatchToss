@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView coin;
     private Button btn;
     private TextView show;
+    public MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
 //        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 //        getSupportActionBar().setCustomView(R.layout.activity_main);
+        mp = MediaPlayer.create(this, R.raw.coinflip);
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         fadeOut.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
+                mp.start();
             }
 
             @Override
@@ -70,15 +74,14 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Animation fadeIn = new AlphaAnimation(0, 1);
                 fadeIn.setInterpolator(new DecelerateInterpolator());
-                fadeIn.setDuration(3000);
+                fadeIn.setDuration(1000);
                 fadeIn.setFillAfter(true);
                 coin.startAnimation(fadeIn);
-
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-
+                mp.stop();
             }
         });
 
