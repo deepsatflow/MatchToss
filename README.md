@@ -6,7 +6,7 @@ overcome the problem I have created an app that I would personally use for mysel
 Hope you find it useful too. 
 
 ## This is how the app looks
-![app](https://user-images.githubusercontent.com/36672530/115465748-ebc2ea80-a1e3-11eb-90b7-643548a59ae5.jpg)
+![app](https://user-images.githubusercontent.com/36672530/115465748-ebc2ea80-a1e3-11eb-90b7-643548a59ae5.jpg =80x20)
 
 
 
