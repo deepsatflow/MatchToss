@@ -2,8 +2,8 @@
 How many times we go to the ground and then ask each other if they have the coin in order to do the toss. This is an app that let player/umpire perfrom the toss without needing the coin, simulating the vibe of performing actual coin toss. This the app that I would personally use for myself if I don't find the coin. 
 Hope you find it useful and enjoyable too! Happy Tossing! 
 
-## Android Apk 
-
+## Android Apk file 
+https://github.com/satishgaurav/cricket-coin-toss/blob/main/MatchToss.apk
 
 
 ## This is how the app looks
