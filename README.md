@@ -6,4 +6,7 @@ overcome the problem I have created an app that I would personally use for mysel
 Hope you find it useful too. 
 
 
-### References: 
+### References:
+1. https://www.ssaurel.com/blog/learn-to-create-a-flip-coin-application-on-android/
+2. Coin Flip sound: https://www.partnersinrhyme.com/soundfx/office_sounds/office_coin-flip_wav.shtml
+
