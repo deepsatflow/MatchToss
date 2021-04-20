@@ -9,4 +9,5 @@ Hope you find it useful too.
 ### References:
 1. https://www.ssaurel.com/blog/learn-to-create-a-flip-coin-application-on-android/
 2. Coin Flip sound: https://www.partnersinrhyme.com/soundfx/office_sounds/office_coin-flip_wav.shtml
+3. And [stackoverflow](https://stackoverflow.com/) and the Internet
 
