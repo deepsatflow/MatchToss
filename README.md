@@ -5,6 +5,10 @@ However, while playing we often feel the vibe the tossing a real coin. In order 
 overcome the problem I have created an app that I would personally use for myself. 
 Hope you find it useful too. 
 
+## This is how the app looks
+![app](https://user-images.githubusercontent.com/36672530/115465748-ebc2ea80-a1e3-11eb-90b7-643548a59ae5.jpg)
+
+
 
 ### References:
 1. https://www.ssaurel.com/blog/learn-to-create-a-flip-coin-application-on-android/
