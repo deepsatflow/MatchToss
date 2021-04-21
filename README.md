@@ -1,3 +1,6 @@
+![ic_launcher-playstore](https://user-images.githubusercontent.com/36672530/115501713-8c3afe00-a228-11eb-9bde-ebe6bf1cdcbb.png)
+
+
 # MatchToss: An app for performing cricket coin toss 
 
 ## What is it? 
