@@ -20,10 +20,10 @@ Android Apk file is available at: https://github.com/satishgaurav/cricket-coin-t
 ## App UI preview 
 <img src="https://user-images.githubusercontent.com/36672530/115465748-ebc2ea80-a1e3-11eb-90b7-643548a59ae5.jpg" width="325" height="700">
 
-## Want to contribute 
+## Want to contribute? 
 If you have any suggestions or feedback? Find me at [Twitter](https://twitter.com/deepsatflow) or Gmail:skumargaurav2@gmail.com
 
-### References:
+## References
 1. https://www.ssaurel.com/blog/learn-to-create-a-flip-coin-application-on-android/
 2. Coin Flip sound: https://www.partnersinrhyme.com/soundfx/office_sounds/office_coin-flip_wav.shtml
 3. App icon: https://www.clipartmax.com/middle/m2i8G6m2A0A0d3K9_cricket-drawing-sketch-boy-playing-cricket-cartoon/
