@@ -1,14 +1,21 @@
-# Cricket coin toss 
+# MatchToss: An app for performing cricket coin toss 
+
+## What is it? 
+An android application for performing a toss. 
+
 How many times we go to the ground and then ask each other if they have the coin in order to do the toss. This is an app that let player/umpire perfrom the toss without needing the coin, simulating the vibe of performing actual coin toss. This the app that I would personally use for myself if I don't find the coin. 
 Hope you find it useful and enjoyable too! Happy Tossing! 
 
-## Android Apk file 
-https://github.com/satishgaurav/cricket-coin-toss/blob/main/MatchToss.apk
+## Main Features 
+- Supports animation and sounds to simulate a real world toss 
+- Surprising scratch card for seeing the result
+
+## Where to get it
+Android Apk file is available at: https://github.com/satishgaurav/cricket-coin-toss/blob/main/MatchToss.apk
 
 
-## This is how the app looks
+## App UI preview 
 <img src="https://user-images.githubusercontent.com/36672530/115465748-ebc2ea80-a1e3-11eb-90b7-643548a59ae5.jpg" width="325" height="700">
-
 
 ### References:
 1. https://www.ssaurel.com/blog/learn-to-create-a-flip-coin-application-on-android/
