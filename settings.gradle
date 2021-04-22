@@ -1,2 +1,4 @@
+include ':mylibrary'
+include ':app:mylibrary'
 include ':app'
 rootProject.name = "Coin Flip"

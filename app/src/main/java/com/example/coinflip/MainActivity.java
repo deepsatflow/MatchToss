@@ -1,12 +1,13 @@
 package com.example.coinflip;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.content.Intent;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
@@ -17,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,27 +35,45 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         coin = findViewById(R.id.imgCoin);
         btn =  findViewById(R.id.btnToss);
-        show = findViewById(R.id.txtViewOutcome);
 
-//        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-//        getSupportActionBar().setCustomView(R.layout.activity_main);
         mp = MediaPlayer.create(this, R.raw.coinflip);
 
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                flipCoin();
+                flipAnimationCoin();
+                String tossOutcome = flipCoin();
+
+
+                Intent myIntent = new Intent(MainActivity.this, MainActivity2.class);
+                System.out.println("toss outcome: " + tossOutcome);
+                myIntent.putExtra("tossOutcome", tossOutcome);
+
+                final Handler handler = new Handler(Looper.getMainLooper());
+                handler.postDelayed(() -> startActivity(myIntent), 1500);
+                // what is lambda in java though?
             }
         });
     }
 
-    private void flipCoin() {
+    private String flipCoin(){
+        int chance = RANDOM.nextInt(2);
+        if (chance == 1 ){
+            return "tail";
+        } else {
+            return "head";
+        }
+    }
+
+    private void flipAnimationCoin() {
 
         Animation fadeOut = new AlphaAnimation(1, 0);
         fadeOut.setInterpolator(new AccelerateInterpolator());
         fadeOut.setDuration(1000);
         fadeOut.setFillAfter(true);
+
+
         fadeOut.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -61,17 +82,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-//                coin.setImageResource(RANDOM.nextFloat() > 0.5f ? R.drawable.tail : R.drawable.head);
-
-                if (RANDOM.nextFloat() > 0.5f){
-                    coin.setImageResource(R.drawable.tail);
-                    show.setText("Paisa");
-                    show.setTextColor(Color.parseColor("#ed5585"));
-                } else {
-                    coin.setImageResource(R.drawable.head);
-                    show.setText("Bharat");
-                    show.setTextColor(Color.parseColor("#ed5f55"));
-                }
                 Animation fadeIn = new AlphaAnimation(0, 1);
                 fadeIn.setInterpolator(new DecelerateInterpolator());
                 fadeIn.setDuration(1000);
