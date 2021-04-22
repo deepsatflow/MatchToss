@@ -16,6 +16,7 @@
         android:text="Cricket Match Toss"
         android:background="@color/purple_700"
         android:textSize="40sp"
+        android:fontFamily="@font/product_sans_bold"
         android:textStyle="bold"
         style="style/TextAppearance.AppCompat.Widget.ActionBar.Title"
         android:textColor="@color/androidGreen"
@@ -39,6 +40,8 @@
         android:layout_height="97dp"
         android:layout_marginBottom="108dp"
         android:text="Toss"
+        android:textSize="20dp"
+        android:fontFamily="@font/product_sans_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imgCoin"
         app:layout_constraintStart_toStartOf="@+id/imgCoin" />

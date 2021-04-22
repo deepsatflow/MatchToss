@@ -45,6 +45,7 @@
                 android:layout_marginBottom="16dp"
                 android:gravity="center"
                 android:text="Let's play!"
+                android:fontFamily="@font/product_sans_bold"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"

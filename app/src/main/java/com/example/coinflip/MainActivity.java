@@ -1,12 +1,6 @@
 package com.example.coinflip;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
-
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,9 +13,9 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.app.Dialog;
 
-import java.util.Objects;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Random;
 
 
@@ -29,31 +23,28 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     public static final Random RANDOM = new Random();
-    private ImageView coin;
-    private Button btn;
-    private TextView show;
+    private ImageView imgCoin;
+    private Button btnToss;
     public MediaPlayer musicToss;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        coin = findViewById(R.id.imgCoin);
-        btn =  findViewById(R.id.btnToss);
+        imgCoin = findViewById(R.id.imgCoin);
+        btnToss =  findViewById(R.id.btnToss);
 
         musicToss = MediaPlayer.create(this, R.raw.coinflip);
 
 
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnToss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 flipAnimationCoin();
                 String tossOutcome = flipCoin();
-
                 Intent myIntent = new Intent(MainActivity.this, MainActivity2.class);
 
-                System.out.println("toss outcome: " + tossOutcome);
                 myIntent.putExtra("tossOutcome", tossOutcome);
 
                 final Handler handler = new Handler(Looper.getMainLooper());
@@ -84,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         fadeOut.setDuration(1000);
         fadeOut.setFillAfter(true);
 //        coin.startAnimation(fadeOut);
-        coin.setImageResource(R.drawable.tail);
+        imgCoin.setImageResource(R.drawable.tail);
 
 
         fadeOut.setAnimationListener(new Animation.AnimationListener() {
@@ -99,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
                 fadeIn.setInterpolator(new DecelerateInterpolator());
                 fadeIn.setDuration(1000);
                 fadeIn.setFillAfter(true);
-                coin.startAnimation(fadeIn);
-                coin.setImageResource(R.drawable.head);
+                imgCoin.startAnimation(fadeIn);
+                imgCoin.setImageResource(R.drawable.head);
 
             }
 
@@ -110,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        coin.startAnimation(fadeOut);
+        imgCoin.startAnimation(fadeOut);
     }
 
 }

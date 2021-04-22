@@ -51,12 +51,11 @@ public class MainActivity2 extends AppCompatActivity {
         if(tossOutcome.equals("head")){
             img.setImageResource(R.drawable.head);
             txtViewOutcome2.setText("Bharat");
-            System.out.println("Head");
 
         } else {
             img.setImageResource(R.drawable.tail);
             txtViewOutcome2.setText("Paisa");
-            System.out.println("Tail");
+
         }
 
         Toast.makeText(MainActivity2.this, "Scratch the card to see!", Toast.LENGTH_SHORT).show();
@@ -83,7 +82,6 @@ public class MainActivity2 extends AppCompatActivity {
                         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         dialog.show();
 
-
                     }
                 }, 1500);
 
@@ -96,12 +94,11 @@ public class MainActivity2 extends AppCompatActivity {
                     }
                 }, 8000); // 8000 milliseconds delay
 
-
             }
 
             @Override
             public void onRevealPercentChangedListener(com.example.coinflip.ScratchView scratchView, float percent) {
-                Log.d("Revealed", String.valueOf(percent));
+//                Log.d("Revealed", String.valueOf(percent));
             }
         });
 
