@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public MediaPlayer musicToss;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState, Activity activity) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         coin = findViewById(R.id.imgCoin);
