@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         startActivity(myIntent);
+                        finish();
                     }
                 }, 1500);
 

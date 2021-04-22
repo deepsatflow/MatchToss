@@ -40,7 +40,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:fontFamily="@font/product_sans_bold"
-                android:textColor="@color/black"
+                android:textColor="@color/purple_500"
                 android:textSize="30sp"
                 android:textStyle="bold"/>
 

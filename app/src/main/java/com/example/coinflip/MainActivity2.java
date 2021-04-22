@@ -82,15 +82,17 @@ public class MainActivity2 extends AppCompatActivity {
                         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         dialog.show();
 
+
                     }
                 }, 1500);
 
                 handler.postDelayed(new Runnable() {
                     public void run() {
 //                        dialog.dismiss();  // don't dismiss just go to main activity
-                        Intent myIntent = new Intent(MainActivity2.this, MainActivity.class);
-                        startActivity(myIntent);
-
+                        Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                        startActivity(intent);
+                        musicPlay.stop();
+                        finish();
                     }
                 }, 8000); // 8000 milliseconds delay
 
@@ -100,8 +102,9 @@ public class MainActivity2 extends AppCompatActivity {
             public void onRevealPercentChangedListener(com.example.coinflip.ScratchView scratchView, float percent) {
 //                Log.d("Revealed", String.valueOf(percent));
             }
+
         });
 
-
     }
+
 }
