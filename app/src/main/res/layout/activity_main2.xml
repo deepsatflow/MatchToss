@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/androidGreen"
     tools:context=".MainActivity2">
 
     <androidx.cardview.widget.CardView
@@ -45,13 +45,13 @@
 
         </LinearLayout>
 
-        <com.anupkumarpanwar.scratchview.ScratchView
+        <com.example.coinflip.ScratchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/scratchView"
             app:overlay_height="300dp"
             app:overlay_width="300dp"
-            app:overlay_image="@drawable/overlay_first"/>
+            app:overlay_image="@drawable/toss"/>
 
     </androidx.cardview.widget.CardView>
 

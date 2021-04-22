@@ -1,4 +1,4 @@
-package com.anupkumarpanwar.scratchview;
+package com.example.coinflip;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -16,22 +16,20 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.anupkumarpanwar.utils.BitmapUtils;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class ScratchView extends View {
 
     public interface IRevealListener {
-        public void onRevealed(ScratchView scratchView);
-
-        public void onRevealPercentChangedListener(ScratchView scratchView, float percent);
+        void onRevealed(ScratchView scratchView);
+        void onRevealPercentChangedListener(ScratchView scratchView, float percent);
     }
 
     /**
@@ -45,7 +43,7 @@ public class ScratchView extends View {
     public static final float STROKE_WIDTH = 12f;
 
     private float mX, mY;
-    private static final float TOUCH_TOLERANCE = 4;
+    private static final float TOUCH_TOLERANCE = 1;
 
     /**
      * Bitmap holding the scratch region.
@@ -145,7 +143,7 @@ public class ScratchView extends View {
         mErasePaint.setStrokeCap(Paint.Cap.ROUND);
         mErasePaint.setXfermode(new PorterDuffXfermode(
                 PorterDuff.Mode.CLEAR));
-        setStrokeWidth(6);
+        setStrokeWidth(20);
 
         mGradientBgPaint = new Paint();
 

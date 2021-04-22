@@ -1,4 +1,5 @@
-package com.anupkumarpanwar.utils;
+package com.example.coinflip;
+
 
 import android.graphics.Bitmap;
 

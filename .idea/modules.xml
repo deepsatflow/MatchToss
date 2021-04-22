@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Coin_Flip.iml" filepath="$PROJECT_DIR$/.idea/modules/Coin_Flip.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Coin_Flip.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Coin_Flip.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mylibrary/Coin_Flip.app.mylibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mylibrary/Coin_Flip.app.mylibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mylibrary/Coin_Flip.mylibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/mylibrary/Coin_Flip.mylibrary.iml" />
     </modules>
   </component>
 </project>

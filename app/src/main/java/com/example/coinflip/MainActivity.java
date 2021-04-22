@@ -2,8 +2,11 @@ package com.example.coinflip;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,7 +19,9 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.app.Dialog;
 
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -27,16 +32,17 @@ public class MainActivity extends AppCompatActivity {
     private ImageView coin;
     private Button btn;
     private TextView show;
-    public MediaPlayer mp;
+    public MediaPlayer musicToss;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState, Activity activity) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         coin = findViewById(R.id.imgCoin);
         btn =  findViewById(R.id.btnToss);
 
-        mp = MediaPlayer.create(this, R.raw.coinflip);
+        musicToss = MediaPlayer.create(this, R.raw.coinflip);
+
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -45,14 +51,19 @@ public class MainActivity extends AppCompatActivity {
                 flipAnimationCoin();
                 String tossOutcome = flipCoin();
 
-
                 Intent myIntent = new Intent(MainActivity.this, MainActivity2.class);
+
                 System.out.println("toss outcome: " + tossOutcome);
                 myIntent.putExtra("tossOutcome", tossOutcome);
 
                 final Handler handler = new Handler(Looper.getMainLooper());
-                handler.postDelayed(() -> startActivity(myIntent), 1500);
-                // what is lambda in java though?
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(myIntent);
+                    }
+                }, 1500);
+
             }
         });
     }
@@ -72,12 +83,14 @@ public class MainActivity extends AppCompatActivity {
         fadeOut.setInterpolator(new AccelerateInterpolator());
         fadeOut.setDuration(1000);
         fadeOut.setFillAfter(true);
+//        coin.startAnimation(fadeOut);
+        coin.setImageResource(R.drawable.tail);
 
 
         fadeOut.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-                mp.start();
+                musicToss.start();
             }
 
             @Override
@@ -87,11 +100,13 @@ public class MainActivity extends AppCompatActivity {
                 fadeIn.setDuration(1000);
                 fadeIn.setFillAfter(true);
                 coin.startAnimation(fadeIn);
+                coin.setImageResource(R.drawable.head);
+
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-                mp.stop();
+                musicToss.stop();
             }
         });
 

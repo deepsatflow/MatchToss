@@ -14,7 +14,7 @@
         android:gravity="center"
         android:padding="4dp"
         android:text="Cricket Match Toss"
-        android:background="@color/cardview_dark_background"
+        android:background="@color/purple_700"
         android:textSize="40sp"
         android:textStyle="bold"
         style="style/TextAppearance.AppCompat.Widget.ActionBar.Title"
