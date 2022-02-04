@@ -21,7 +21,7 @@ Android Apk file is available at: https://github.com/satishgaurav/cricket-coin-t
 <img src="https://user-images.githubusercontent.com/36672530/115465748-ebc2ea80-a1e3-11eb-90b7-643548a59ae5.jpg" width="325" height="700">
 
 ## Want to contribute? 
-If you have any suggestions or feedback? Find me at [Twitter](https://twitter.com/deepsatflow)
+Have any suggestions or feedback? Find me at [Twitter](https://twitter.com/deepsatflow)
 
 ## References
 1. https://www.ssaurel.com/blog/learn-to-create-a-flip-coin-application-on-android/
