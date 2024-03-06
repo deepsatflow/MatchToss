@@ -1,4 +1,4 @@
-package com.example.coinflip;
+package com.eatmadi.coinflip;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -29,6 +29,7 @@ public class ScratchView extends View {
 
     public interface IRevealListener {
         void onRevealed(ScratchView scratchView);
+
         void onRevealPercentChangedListener(ScratchView scratchView, float percent);
     }
 
@@ -84,9 +85,9 @@ public class ScratchView extends View {
      */
     private BitmapDrawable mDrawable;
 
-
     /**
-     * Listener object callback reference to send back the callback when the text has been revealed.
+     * Listener object callback reference to send back the callback when the text
+     * has been revealed.
      */
     private IRevealListener mRevealListener;
 
@@ -102,13 +103,11 @@ public class ScratchView extends View {
 
     Bitmap scratchBitmap;
 
-
     public ScratchView(Context context) {
         super(context);
         this.mContext = context;
         init();
     }
-
 
     public ScratchView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -157,7 +156,6 @@ public class ScratchView extends View {
         float overlayWidth = arr.getDimension(R.styleable.ScratchView_overlay_width, 1000);
         float overlayHeight = arr.getDimension(R.styleable.ScratchView_overlay_height, 1000);
 
-
         String tileMode = arr.getString(R.styleable.ScratchView_tile_mode);
         if (tileMode == null) {
             tileMode = "CLAMP";
@@ -188,12 +186,12 @@ public class ScratchView extends View {
     /**
      * Set the strokes width based on the parameter multiplier.
      *
-     * @param multiplier can be 1,2,3 and so on to set the stroke width of the paint.
+     * @param multiplier can be 1,2,3 and so on to set the stroke width of the
+     *                   paint.
      */
     public void setStrokeWidth(int multiplier) {
         mErasePaint.setStrokeWidth(multiplier * STROKE_WIDTH);
     }
-
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -207,12 +205,13 @@ public class ScratchView extends View {
         int startGradientColor = ContextCompat.getColor(getContext(), R.color.scratch_start_gradient);
         int endGradientColor = ContextCompat.getColor(getContext(), R.color.scratch_end_gradient);
 
-
-        mGradientBgPaint.setShader(new LinearGradient(0, 0, 0, getHeight(), startGradientColor, endGradientColor, Shader.TileMode.MIRROR));
+        mGradientBgPaint.setShader(
+                new LinearGradient(0, 0, 0, getHeight(), startGradientColor, endGradientColor, Shader.TileMode.MIRROR));
 
         mCanvas.drawRect(rect, mGradientBgPaint);
         mDrawable.draw(mCanvas);
-//        Toast.makeText(mContext, String.valueOf(getWidth()), Toast.LENGTH_LONG).show();
+        // Toast.makeText(mContext, String.valueOf(getWidth()),
+        // Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -229,7 +228,6 @@ public class ScratchView extends View {
         mX = x;
         mY = y;
     }
-
 
     /**
      * clears the scratch area to reveal the hidden image.
@@ -261,7 +259,6 @@ public class ScratchView extends View {
         invalidate();
     }
 
-
     private void touch_move(float x, float y) {
 
         float dx = Math.abs(x - mX);
@@ -273,7 +270,6 @@ public class ScratchView extends View {
 
             drawPath();
         }
-
 
         mTouchPath.reset();
         mTouchPath.addCircle(mX, mY, 30, Path.Direction.CW);
@@ -334,7 +330,6 @@ public class ScratchView extends View {
     public int getColor() {
         return mErasePaint.getColor();
     }
-
 
     public Paint getErasePaint() {
         return mErasePaint;
@@ -418,22 +413,23 @@ public class ScratchView extends View {
         int top = 0;
         int width = getWidth();
         int height = getHeight();
-        return new int[]{left, top, left + width, top + height};
+        return new int[] { left, top, left + width, top + height };
     }
 
     private Bitmap drawableToBitmap(Drawable drawable) {
         Bitmap bitmap;
         if (drawable instanceof BitmapDrawable) {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
-            if(bitmapDrawable.getBitmap() != null) {
+            if (bitmapDrawable.getBitmap() != null) {
                 return bitmapDrawable.getBitmap();
             }
         }
 
-        if(drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+        if (drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
             bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
         } else {
-            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(),
+                    Bitmap.Config.ARGB_8888);
         }
 
         Canvas canvas = new Canvas(bitmap);

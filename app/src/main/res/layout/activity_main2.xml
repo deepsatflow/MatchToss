@@ -46,7 +46,7 @@
 
         </LinearLayout>
 
-        <com.example.coinflip.ScratchView
+        <com.eatmadi.coinflip.ScratchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/scratchView"

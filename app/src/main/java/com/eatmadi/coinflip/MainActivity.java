@@ -1,4 +1,4 @@
-package com.example.coinflip;
+package com.eatmadi.coinflip;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -17,8 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
-
-
 public class MainActivity extends AppCompatActivity {
 
     public static final Random RANDOM = new Random();
@@ -33,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         Button btnToss = findViewById(R.id.btnToss);
 
         musicToss = MediaPlayer.create(this, R.raw.coinflip);
-
-
 
         btnToss.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private String flipCoin(){
+    private String flipCoin() {
         int chance = RANDOM.nextInt(2);
-        if (chance == 1 ){
+        if (chance == 1) {
             return "tail";
         } else {
             return "head";
@@ -73,9 +69,8 @@ public class MainActivity extends AppCompatActivity {
         fadeOut.setInterpolator(new AccelerateInterpolator());
         fadeOut.setDuration(1000);
         fadeOut.setFillAfter(true);
-//        coin.startAnimation(fadeOut);
+        // coin.startAnimation(fadeOut);
         imgCoin.setImageResource(R.drawable.tail);
-
 
         fadeOut.setAnimationListener(new Animation.AnimationListener() {
             @Override

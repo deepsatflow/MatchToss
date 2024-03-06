@@ -1,5 +1,4 @@
-package com.example.coinflip;
-
+package com.eatmadi.coinflip;
 
 import android.graphics.Bitmap;
 
@@ -15,15 +14,16 @@ public class BitmapUtils {
      *
      * @param bitmap1 input bitmap 1
      * @param bitmap2 input bitmap 2
-     * @return a value between 0.0 to 1.0 . Note the method will return 0.0 if either of bitmaps are null nor of same size.
+     * @return a value between 0.0 to 1.0 . Note the method will return 0.0 if
+     *         either of bitmaps are null nor of same size.
      *
      */
     public static float compareEquivalance(Bitmap bitmap1, Bitmap bitmap2) {
 
-        if (bitmap1 == null || bitmap2 == null || bitmap1.getWidth() != bitmap2.getWidth() || bitmap1.getHeight() != bitmap2.getHeight()) {
+        if (bitmap1 == null || bitmap2 == null || bitmap1.getWidth() != bitmap2.getWidth()
+                || bitmap1.getHeight() != bitmap2.getHeight()) {
             return 0f;
         }
-
 
         ByteBuffer buffer1 = ByteBuffer.allocate(bitmap1.getHeight() * bitmap1.getRowBytes());
         bitmap1.copyPixelsToBuffer(buffer1);
@@ -37,20 +37,21 @@ public class BitmapUtils {
         int len = array1.length; // array1 and array2 will be of some length.
         int count = 0;
 
-        for(int i=0;i<len;i++) {
-            if(array1[i] == array2[i]) {
+        for (int i = 0; i < len; i++) {
+            if (array1[i] == array2[i]) {
                 count++;
             }
         }
 
-        return ((float)(count))/len;
+        return ((float) (count)) / len;
     }
 
     /**
      * Finds the percentage of pixels that do are empty.
      *
      * @param bitmap input bitmap
-     * @return a value between 0.0 to 1.0 . Note the method will return 0.0 if either of bitmaps are null nor of same size.
+     * @return a value between 0.0 to 1.0 . Note the method will return 0.0 if
+     *         either of bitmaps are null nor of same size.
      *
      */
     public static float getTransparentPixelPercent(Bitmap bitmap) {
@@ -67,12 +68,12 @@ public class BitmapUtils {
         int len = array.length;
         int count = 0;
 
-        for(int i=0;i<len;i++) {
-            if(array[i] == 0) {
+        for (int i = 0; i < len; i++) {
+            if (array[i] == 0) {
                 count++;
             }
         }
 
-        return ((float)(count))/len;
+        return ((float) (count)) / len;
     }
 }
