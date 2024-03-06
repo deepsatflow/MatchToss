@@ -35,10 +35,9 @@ public class ScratchView extends View {
     /**
      * Core Items
      */
-    private Context mContext;
+    private final Context mContext;
     private AttributeSet attrs;
     private int styleAttr;
-    private View view;
 
     public static final float STROKE_WIDTH = 12f;
 
