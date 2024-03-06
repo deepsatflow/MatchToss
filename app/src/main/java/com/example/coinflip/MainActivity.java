@@ -12,7 +12,6 @@ import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static final Random RANDOM = new Random();
     private ImageView imgCoin;
-    private Button btnToss;
     public MediaPlayer musicToss;
 
     @Override
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imgCoin = findViewById(R.id.imgCoin);
-        btnToss =  findViewById(R.id.btnToss);
+        Button btnToss = findViewById(R.id.btnToss);
 
         musicToss = MediaPlayer.create(this, R.raw.coinflip);
 
