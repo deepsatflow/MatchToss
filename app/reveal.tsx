@@ -267,7 +267,7 @@ export default function RevealScreen() {
           >
             <Text style={styles.cardTitle}>Toss winner</Text>
             <Text style={styles.cardOutcome}>
-              {tossOutcome === "head" ? "Bharat" : "Paisa"}
+              {tossOutcome === "head" ? "Head" : "Tail"}
             </Text>
             <Image
               source={coinImage}
