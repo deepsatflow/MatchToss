@@ -3,7 +3,6 @@ import { useFonts } from "expo-font";
 import * as Haptics from "expo-haptics";
 import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import LottieView from "lottie-react-native";
 import React, {
   useCallback,
   useEffect,
@@ -13,7 +12,6 @@ import React, {
 } from "react";
 import {
   Image,
-  Modal,
   PanResponder,
   Platform,
   StyleSheet,
@@ -38,7 +36,6 @@ type Point = { x: number; y: number };
 
 const HEAD_IMAGE = require("../assets/images/head.png");
 const TAIL_IMAGE = require("../assets/images/tail.png");
-const LOTTIE_ANIMATION = require("../assets/lottie/play_animation.json");
 
 const GRID_STEPS = 30;
 const SCRATCH_STROKE = 34;
@@ -62,12 +59,15 @@ export default function RevealScreen() {
     height: 0,
   });
   const [scratchProgress, setScratchProgress] = useState(0);
-  const [showCelebration, setShowCelebration] = useState(false);
+  const [remainingSeconds, setRemainingSeconds] = useState(0);
 
   const scratchCellsRef = useRef<Set<string>>(new Set());
   const scratchProgressRef = useRef(0);
   const revealTriggeredRef = useRef(false);
   const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
+    null
+  );
   const drumSoundRef = useRef<Audio.Sound | null>(null);
 
   useEffect(() => {
@@ -93,6 +93,10 @@ export default function RevealScreen() {
       if (resetTimerRef.current) {
         clearTimeout(resetTimerRef.current);
       }
+      if (countdownIntervalRef.current) {
+        clearInterval(countdownIntervalRef.current);
+        countdownIntervalRef.current = null;
+      }
     };
   }, []);
 
@@ -101,14 +105,18 @@ export default function RevealScreen() {
       if (resetTimerRef.current) {
         clearTimeout(resetTimerRef.current);
       }
+      if (countdownIntervalRef.current) {
+        clearInterval(countdownIntervalRef.current);
+        countdownIntervalRef.current = null;
+      }
       drumSoundRef.current?.stopAsync().catch(() => {});
       revealTriggeredRef.current = false;
       scratchCellsRef.current.clear();
       scratchProgressRef.current = 0;
       setScratchProgress(0);
       setPaths([]);
-      setShowCelebration(false);
       setStage("scratch");
+      setRemainingSeconds(0);
 
       if (goHome) {
         router.replace("/");
@@ -123,9 +131,24 @@ export default function RevealScreen() {
     }
     revealTriggeredRef.current = true;
     setStage("celebrate");
-    setShowCelebration(true);
     resetTimerRef.current && clearTimeout(resetTimerRef.current);
-    resetTimerRef.current = setTimeout(() => resetExperience(true), 7000);
+    setRemainingSeconds(10);
+    resetTimerRef.current = setTimeout(() => resetExperience(true), 10000);
+    if (countdownIntervalRef.current) {
+      clearInterval(countdownIntervalRef.current);
+    }
+    countdownIntervalRef.current = setInterval(() => {
+      setRemainingSeconds((prev) => {
+        if (prev <= 1) {
+          if (countdownIntervalRef.current) {
+            clearInterval(countdownIntervalRef.current);
+            countdownIntervalRef.current = null;
+          }
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(
       () => {}
     );
@@ -238,7 +261,10 @@ export default function RevealScreen() {
           onLayout={(event) => setScratchLayout(event.nativeEvent.layout)}
           pointerEvents="box-none"
         >
-          <LinearGradient colors={["#ffffff", "#f4f4ed"]} style={styles.cardBackground}>
+          <LinearGradient
+            colors={["#ffffff", "#f4f4ed"]}
+            style={styles.cardBackground}
+          >
             <Text style={styles.cardTitle}>Toss winner</Text>
             <Text style={styles.cardOutcome}>
               {tossOutcome === "head" ? "Bharat" : "Paisa"}
@@ -264,9 +290,15 @@ export default function RevealScreen() {
                 pointerEvents="none"
               >
                 <Defs>
-                  <SvgLinearGradient id="overlayGradient" x1="0" y1="0" x2="1" y2="1">
-                    <Stop offset="0" stopColor="#d6d3d1" stopOpacity="0.95" />
-                    <Stop offset="1" stopColor="#b8b6b4" stopOpacity="0.98" />
+                  <SvgLinearGradient
+                    id="overlayGradient"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="1"
+                  >
+                    <Stop offset="0" stopColor="#d6d3d1" stopOpacity="1" />
+                    <Stop offset="1" stopColor="#b8b6b4" stopOpacity="1" />
                   </SvgLinearGradient>
                   <Mask id="revealMask">
                     <Rect width="100%" height="100%" fill="white" />
@@ -309,7 +341,7 @@ export default function RevealScreen() {
             </View>
           ) : (
             <Text style={styles.celebrateText}>
-              Celebrating… heading back to toss shortly
+              Celebrating... heading back in {remainingSeconds} seconds
             </Text>
           )}
           <TouchableOpacity
@@ -320,35 +352,6 @@ export default function RevealScreen() {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
-
-      <Modal
-        visible={showCelebration}
-        transparent
-        animationType="fade"
-        onRequestClose={() => resetExperience(true)}
-      >
-        <View style={styles.modalBackdrop}>
-          <View style={styles.modalCard}>
-            <LottieView
-              autoPlay
-              loop
-              source={LOTTIE_ANIMATION}
-              style={styles.lottie}
-              resizeMode="cover"
-            />
-            <Text style={styles.modalTitle}>Let&apos;s play!</Text>
-            <Text style={styles.modalSubtitle}>
-              Resetting for the next toss…
-            </Text>
-            <TouchableOpacity
-              style={styles.secondaryButton}
-              onPress={() => resetExperience(true)}
-            >
-              <Text style={styles.secondaryButtonText}>Toss again now</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
     </LinearGradient>
   );
 }
