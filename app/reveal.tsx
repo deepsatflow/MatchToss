@@ -422,6 +422,7 @@ const styles = StyleSheet.create({
   actions: {
     marginTop: 18,
     gap: 12,
+    paddingBottom: 24,
   },
   progressRow: {
     flexDirection: "row",
@@ -456,10 +457,13 @@ const styles = StyleSheet.create({
   },
   secondaryButton: {
     backgroundColor: "#0f8f57",
-    paddingVertical: 12,
-    paddingHorizontal: 18,
-    borderRadius: 14,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    borderRadius: 18,
+    minHeight: 128,
+    width: "100%",
     alignItems: "center",
+    justifyContent: "center",
   },
   secondaryButtonText: {
     color: "#ffffff",
