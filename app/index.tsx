@@ -116,11 +116,13 @@ export default function HomeScreen() {
               resizeMode="contain"
             />
           </Animated.View>
-          <Text style={styles.coinLabel}>
-            {stage === "flipping"
-              ? "Flipping... hold tight"
-              : "Result stays hidden until you scratch the next screen"}
-          </Text>
+          <View style={styles.coinLabelBox}>
+            <Text style={styles.coinLabel}>
+              {stage === "flipping"
+                ? "Flipping... hold tight"
+                : "Result stays hidden until you scratch the next screen"}
+            </Text>
+          </View>
         </View>
 
         <View style={styles.cardShell}>
@@ -196,11 +198,17 @@ const styles = StyleSheet.create({
     width: 180,
     height: 180,
   },
+  coinLabelBox: {
+    minHeight: 52,
+    paddingHorizontal: 12,
+    marginTop: 12,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   coinLabel: {
     fontFamily: "ProductSansBold",
     color: "#1f2937",
     fontSize: 16,
-    marginTop: 12,
     textAlign: "center",
   },
   cardShell: {
@@ -245,7 +253,7 @@ const styles = StyleSheet.create({
   },
   primaryButtonText: {
     fontFamily: "ProductSansBold",
-    fontSize: 24,
+    fontSize: 18,
     color: "#0f172a",
     textAlign: "center",
   },
