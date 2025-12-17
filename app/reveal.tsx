@@ -422,12 +422,13 @@ const styles = StyleSheet.create({
   actions: {
     marginTop: 18,
     gap: 12,
-    paddingBottom: 24,
+    paddingBottom: 40,
   },
   progressRow: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    marginVertical: 24,
   },
   progressBarBackground: {
     flex: 1,

@@ -18,7 +18,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 type TossOutcome = "head" | "tail";
 type Stage = "idle" | "flipping";
 
-const TOSS_IMAGE = require("../assets/images/toss.png");
+const TOSS_IMAGE = require("../assets/images/head.png");
 
 export default function HomeScreen() {
   const router = useRouter();
