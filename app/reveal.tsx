@@ -384,11 +384,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     borderRadius: 20,
     overflow: "hidden",
-    shadowColor: "#000",
-    shadowOpacity: 0.12,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 10 },
-    elevation: 6,
+    backgroundColor: "#f6f6f0",
   },
   cardBackground: {
     padding: 20,
@@ -459,8 +455,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   secondaryButton: {
-    borderWidth: 1,
-    borderColor: "#0f8f57",
     backgroundColor: "#0f8f57",
     paddingVertical: 12,
     paddingHorizontal: 18,
@@ -481,7 +475,7 @@ const styles = StyleSheet.create({
   },
   modalCard: {
     width: "100%",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#f8f8f4",
     borderRadius: 20,
     padding: 20,
     alignItems: "center",

@@ -118,16 +118,20 @@ export default function HomeScreen() {
           </Animated.View>
           <Text style={styles.coinLabel}>
             {stage === "flipping"
-              ? "Flipping… hold tight"
+              ? "Flipping... hold tight"
               : "Result stays hidden until you scratch the next screen"}
           </Text>
         </View>
 
         <View style={styles.cardShell}>
-          <LinearGradient colors={["#ffffff", "#f4f4ed"]} style={styles.cardBackground}>
+          <LinearGradient
+            colors={["#ffffff", "#f4f4ed"]}
+            style={styles.cardBackground}
+          >
             <Text style={styles.cardTitle}>How it works</Text>
             <Text style={styles.cardHint}>
-              Tap the button to toss. We&apos;ll send you to a scratch card to reveal who won.
+              Tap the button to toss. We&apos;ll send you to a scratch card to
+              reveal who won.
             </Text>
           </LinearGradient>
         </View>
@@ -143,7 +147,7 @@ export default function HomeScreen() {
             ]}
           >
             <Text style={styles.primaryButtonText}>
-              {stage === "flipping" ? "Flipping…" : "Toss the coin"}
+              {stage === "flipping" ? "Flipping..." : "Toss the coin"}
             </Text>
           </TouchableOpacity>
         </View>
@@ -181,21 +185,16 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   coinCard: {
-    width: 180,
-    height: 180,
-    borderRadius: 100,
+    width: 240,
+    height: 240,
+    borderRadius: 120,
     backgroundColor: "#f4f5f7",
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: "#000",
-    shadowOpacity: 0.18,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 8 },
-    elevation: 5,
   },
   coin: {
-    width: 140,
-    height: 140,
+    width: 180,
+    height: 180,
   },
   coinLabel: {
     fontFamily: "ProductSansBold",
@@ -208,11 +207,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     borderRadius: 20,
     overflow: "hidden",
-    shadowColor: "#000",
-    shadowOpacity: 0.12,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 10 },
-    elevation: 6,
+    backgroundColor: "#f6f6f0",
   },
   cardBackground: {
     padding: 20,
@@ -237,21 +232,21 @@ const styles = StyleSheet.create({
   },
   primaryButton: {
     backgroundColor: "#d4af37",
-    paddingVertical: 16,
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+    minHeight: 128,
+    width: "100%",
     alignItems: "center",
+    justifyContent: "center",
     borderRadius: 16,
-    shadowColor: "#000",
-    shadowOpacity: 0.15,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 6,
   },
   buttonDisabled: {
     opacity: 0.7,
   },
   primaryButtonText: {
     fontFamily: "ProductSansBold",
-    fontSize: 18,
+    fontSize: 24,
     color: "#0f172a",
+    textAlign: "center",
   },
 });
