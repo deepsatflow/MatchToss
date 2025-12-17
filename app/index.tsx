@@ -1,8 +1,8 @@
-import { Audio } from "expo-av";
 import { useFonts } from "expo-font";
 import * as Haptics from "expo-haptics";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
+import { setAudioModeAsync, useAudioPlayer } from "expo-audio";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   Animated,
@@ -27,31 +27,16 @@ export default function HomeScreen() {
   });
 
   const flipAnim = useRef(new Animated.Value(0)).current;
-  const coinSoundRef = useRef<Audio.Sound | null>(null);
+  const coinPlayer = useAudioPlayer(require("../assets/sounds/coinflip.mp3"));
 
   const [stage, setStage] = useState<Stage>("idle");
 
   useEffect(() => {
-    let isMounted = true;
-    const prepareAudio = async () => {
-      try {
-        await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
-        const coin = new Audio.Sound();
-        await coin.loadAsync(require("../assets/sounds/coinflip.mp3"));
-        if (isMounted) {
-          coinSoundRef.current = coin;
-        }
-      } catch (error) {
-        console.warn("Failed to load toss sound", error);
-      }
-    };
-
-    prepareAudio();
-
-    return () => {
-      isMounted = false;
-      coinSoundRef.current?.unloadAsync().catch(() => {});
-    };
+    setAudioModeAsync({
+      playsInSilentMode: true,
+      interruptionMode: "mixWithOthers",
+      interruptionModeAndroid: "duckOthers",
+    }).catch(() => {});
   }, []);
 
   const startToss = useCallback(async () => {
@@ -63,11 +48,8 @@ export default function HomeScreen() {
 
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
 
-    try {
-      await coinSoundRef.current?.replayAsync();
-    } catch (error) {
-      console.warn("Unable to play coin flip", error);
-    }
+    coinPlayer.seekTo(0).catch(() => {});
+    coinPlayer.play();
 
     Animated.timing(flipAnim, {
       toValue: 1,
@@ -78,7 +60,7 @@ export default function HomeScreen() {
       setStage("idle");
       router.push({ pathname: "/reveal", params: { outcome } });
     });
-  }, [flipAnim, router, stage]);
+  }, [coinPlayer, flipAnim, router, stage]);
 
   if (!fontsLoaded) {
     return null;

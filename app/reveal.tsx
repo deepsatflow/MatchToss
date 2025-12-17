@@ -1,8 +1,8 @@
-import { Audio } from "expo-av";
 import { useFonts } from "expo-font";
 import * as Haptics from "expo-haptics";
 import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { setAudioModeAsync, useAudioPlayer } from "expo-audio";
 import React, {
   useCallback,
   useEffect,
@@ -68,28 +68,16 @@ export default function RevealScreen() {
   const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
     null
   );
-  const drumSoundRef = useRef<Audio.Sound | null>(null);
+  const drumPlayer = useAudioPlayer(require("../assets/sounds/drum_roll.m4a"));
 
   useEffect(() => {
-    let isMounted = true;
-    const prepareAudio = async () => {
-      try {
-        await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
-        const drum = new Audio.Sound();
-        await drum.loadAsync(require("../assets/sounds/drum_roll.m4a"));
-        if (isMounted) {
-          drumSoundRef.current = drum;
-        }
-      } catch (error) {
-        console.warn("Failed to load reveal sound", error);
-      }
-    };
-
-    prepareAudio();
+    setAudioModeAsync({
+      playsInSilentMode: true,
+      interruptionMode: "mixWithOthers",
+      interruptionModeAndroid: "duckOthers",
+    }).catch(() => {});
 
     return () => {
-      isMounted = false;
-      drumSoundRef.current?.unloadAsync().catch(() => {});
       if (resetTimerRef.current) {
         clearTimeout(resetTimerRef.current);
       }
@@ -109,7 +97,8 @@ export default function RevealScreen() {
         clearInterval(countdownIntervalRef.current);
         countdownIntervalRef.current = null;
       }
-      drumSoundRef.current?.stopAsync().catch(() => {});
+      drumPlayer.pause();
+      drumPlayer.seekTo(0).catch(() => {});
       revealTriggeredRef.current = false;
       scratchCellsRef.current.clear();
       scratchProgressRef.current = 0;
@@ -122,7 +111,7 @@ export default function RevealScreen() {
         router.replace("/");
       }
     },
-    [router]
+    [drumPlayer, router]
   );
 
   const handleReveal = useCallback(async () => {
@@ -153,11 +142,12 @@ export default function RevealScreen() {
       () => {}
     );
     try {
-      await drumSoundRef.current?.replayAsync();
+      drumPlayer.seekTo(0).catch(() => {});
+      drumPlayer.play();
     } catch (error) {
       console.warn("Unable to play drum roll", error);
     }
-  }, [resetExperience]);
+  }, [drumPlayer, resetExperience]);
 
   const handleScratchPoint = useCallback(
     (x: number, y: number) => {
