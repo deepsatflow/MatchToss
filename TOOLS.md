@@ -13,7 +13,7 @@ A fresh Expo/React Native port of the original MatchToss Android app. Flip a coi
 ## What’s inside
 
 - Coin flip animation with haptics + `coinflip.mp3`
-- Scratch-card reveal (SVG mask) with progress tracking
+- Scratch-card reveal (SVG mask) with progress tracking on the reveal screen
 - Celebration modal with Lottie (`assets/lottie/play_animation.json`) and drum roll audio
 - Product Sans Bold font copied from the original app
 - Assets: `head.png`, `tail.png`, `toss.png`, icon replaced with the original launcher art
