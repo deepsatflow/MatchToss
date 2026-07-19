@@ -88,6 +88,14 @@ export default function RevealScreen() {
     };
   }, []);
 
+  const navigateHome = useCallback(() => {
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      router.replace("/");
+    }
+  }, [router]);
+
   const resetExperience = useCallback(
     (goHome = true) => {
       if (resetTimerRef.current) {
@@ -108,10 +116,10 @@ export default function RevealScreen() {
       setRemainingSeconds(0);
 
       if (goHome) {
-        router.replace("/");
+        navigateHome();
       }
     },
-    [drumPlayer, router]
+    [drumPlayer, navigateHome]
   );
 
   const handleReveal = useCallback(async () => {
@@ -396,8 +404,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   cardCoin: {
-    width: "100%",
+    width: 140,
     height: 140,
+    borderRadius: 70,
+    alignSelf: "center",
     marginBottom: 12,
   },
   cardHint: {

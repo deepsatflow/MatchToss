@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
   coin: {
     width: 180,
     height: 180,
+    borderRadius: 90,
   },
   coinLabelBox: {
     minHeight: 52,
