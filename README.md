@@ -1,34 +1,58 @@
-![ic_launcher-playstore](https://user-images.githubusercontent.com/36672530/115501713-8c3afe00-a228-11eb-9bde-ebe6bf1cdcbb.png)
+<p align="center">
+  <img src="assets/images/MatchToss.png" width="160" alt="Match Toss mascot">
+</p>
 
-# MatchToss: A Coin Toss App
+<h1 align="center">Match Toss</h1>
 
-## What is it?
+<p align="center">The cricket toss, without the coin. Flip, scratch &amp; reveal the winner.</p>
 
-MatchToss is an Android application for performing a coin toss.
+## Overview
 
-How often do we go to the field and then ask each other if they have a coin for the toss? This app allows players or umpires to perform the toss without needing a physical coin, simulating the experience of an actual coin toss. This is an app that I would personally use if I couldn't find a coin.
-I hope you find it useful and enjoyable too! Happy Tossing!
+How often do we get to the field and ask each other if anyone has a coin for the toss? Match Toss lets players and umpires do the toss without a physical coin while keeping the feel of the real thing: an animated coin flip with sound and haptics, followed by a scratch card that hides the result until you rub it away.
 
-## Main Features
+Built with [Expo](https://expo.dev) (React Native) and shipped to Android as `com.eatmadi.matchtoss`.
 
-- Supports animations and sounds to simulate a real-world toss
-- Includes a surprise scratch card to reveal the result
+## Features
 
-## Where to get it
+- Realistic coin flip — rotate animation, coin-flip sound, and haptic feedback
+- Result stays hidden until you scratch a digital scratch card on the next screen
+- Auto-reveal once 50% of the card is scratched, with a drum-roll celebration
+- Real ₹10 coin faces for heads and tails
 
-The Android APK file is available at: https://github.com/satishgaurav/cricket-coin-toss/blob/main/MatchToss.apk
+## Screenshots
 
-## App UI preview
+| Toss | Scratch | Winner |
+|---|---|---|
+| ![Toss screen](store-assets/phone/01-toss.png) | ![Scratch screen](store-assets/phone/02-scratch.png) | ![Winner screen](store-assets/phone/03-winner.png) |
 
-<img src="https://user-images.githubusercontent.com/36672530/115465748-ebc2ea80-a1e3-11eb-90b7-643548a59ae5.jpg" width="325" height="700">
+## Development
 
-## Want to contribute?
+```bash
+npm install
+npx expo start        # press a for Android, i for iOS, w for web
+npm run lint
+```
 
-Do you have any suggestions or feedback? Find me on [Twitter](https://twitter.com/deepsatflow)
+The app is a two-screen [expo-router](https://docs.expo.dev/router/introduction/) project: `app/index.tsx` (toss) and `app/reveal.tsx` (scratch card). See `TOOLS.md` for more detail on running and releasing.
 
-## References
+## Release
 
-1. https://www.ssaurel.com/blog/learn-to-create-a-flip-coin-application-on-android/
-2. Coin Flip sound: https://www.partnersinrhyme.com/soundfx/office_sounds/office_coin-flip_wav.shtml
-3. App icon: https://www.clipartmax.com/middle/m2i8G6m2A0A0d3K9_cricket-drawing-sketch-boy-playing-cricket-cartoon/
+Production builds and Play Store submission go through [EAS](https://docs.expo.dev/eas/):
+
+```bash
+eas build -p android --profile production
+eas submit -p android --latest
+```
+
+Play Store listing graphics (icon, feature graphic, phone/tablet screenshots) live in `store-assets/`.
+
+## Feedback
+
+Suggestions or feedback? Find me on [Twitter](https://twitter.com/deepsatflow).
+
+## Credits
+
+1. Coin flip tutorial: https://www.ssaurel.com/blog/learn-to-create-a-flip-coin-application-on-android/
+2. Coin flip sound: https://www.partnersinrhyme.com/soundfx/office_sounds/office_coin-flip_wav.shtml
+3. App icon / mascot: https://www.clipartmax.com/middle/m2i8G6m2A0A0d3K9_cricket-drawing-sketch-boy-playing-cricket-cartoon/
 4. And of course, [StackOverflow](https://stackoverflow.com/) and the Internet
